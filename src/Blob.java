@@ -14,7 +14,7 @@ public class Blob {
     public Blob (String fileName) throws Exception {
         File read = new File(fileName);
         sha=getSHA1(read);
-        File write = new File(sha+".txt");
+        File write = new File("/administrator/eclipse-workspace/GitCreator/src/Objects/"+sha+".txt");
         write.createNewFile();
         InputStream input = new FileInputStream(read);
         OutputStream output = new FileOutputStream(write);
@@ -22,7 +22,10 @@ public class Blob {
         int length;
         while ((length = input.read(buffer)) > 0) {
                output.write(buffer, 0, length);
+               
         }
+        output.close();
+        input.close();
 
         
      
@@ -33,7 +36,7 @@ public class Blob {
     }
     */
     public static String getSHA1(File file) throws IOException {
-        System.out.println ("hello");
+        
 
         try {
             MessageDigest md = MessageDigest.getInstance("SHA1");
@@ -61,6 +64,10 @@ public class Blob {
         } catch (NoSuchAlgorithmException ex) {
             throw new RuntimeException(ex);
         }
+    }
+    public String getSHA()
+    {
+    	return sha;
     }
    
 }
