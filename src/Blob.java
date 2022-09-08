@@ -6,6 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -14,7 +18,9 @@ public class Blob {
     public Blob (String fileName) throws Exception {
         File read = new File(fileName);
         sha=getSHA1(read);
-        File write = new File("/administrator/eclipse-workspace/GitCreator/src/Objects/"+sha+".txt");
+        
+        
+        File write = new File("Objects/"+sha+".txt");
         write.createNewFile();
         InputStream input = new FileInputStream(read);
         OutputStream output = new FileOutputStream(write);
@@ -32,7 +38,7 @@ public class Blob {
     }//from  www.jav a  2s  . c o  m
    /* public File getFile(String fileName)
     {
-    	return fileName.;
+    	return fileName.;     
     }
     */
     public static String getSHA1(File file) throws IOException {
