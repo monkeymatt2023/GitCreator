@@ -9,15 +9,23 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 
 public class Index {
 	private HashMap<String, String> blobs;
 	private File index;
-	public Index()
+	private FileWriter output;
+	public Index() throws IOException
 	{
-		 index=new File("index");
-		new File("/objects").mkdirs();
+		Path path= Paths.get("Objects/");
+		Files.createDirectories(path);
+		index=new File("Objects/index.txt");
+		blobs=new HashMap<String,String>();
+		
+
 		
 	}
 	public void addBlobs(String fileName) throws Exception
@@ -28,25 +36,28 @@ public class Index {
 	}
 	public void addToFile (String fileName, String shaString) throws IOException
 	{
-        FileWriter output = new FileWriter(index);
-        output.write(fileName+", "+shaString);
+		output = new FileWriter(index, true);
+        output.append(fileName+", "+shaString+"\n");
         blobs.put (fileName,shaString);
         output.close();
+        
 	}
 	public boolean removeBlob(String fileName) throws IOException
 	{
 		if (blobs.containsKey(fileName))
 		{
-			File inputFile=new File(fileName);
+			File inputFile=new File("Objects/index.txt");
 			
-			File tempFile= new File (fileName);
+			File tempFile= new File ("temp.txt");
 			BufferedReader reader = new BufferedReader(new FileReader(inputFile));
 			BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
 			String lineToRemove =fileName+", "+blobs.get(fileName);
+			System.out.println (lineToRemove);
 			String currentLine;
 			
 			while((currentLine = reader.readLine()) != null) {
 			    // trim newline when comparing with lineToRemove
+				System.out.print(("1"));
 			    String trimmedLine = currentLine.trim();
 			    if(trimmedLine.equals(lineToRemove)) continue;
 			    writer.write(currentLine + System.getProperty("line.separator"));

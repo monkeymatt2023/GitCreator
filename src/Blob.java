@@ -71,7 +71,7 @@ public class Blob {
             throw new RuntimeException(ex);
         }
     }
-    public String getSHA()
+    public  String getSHA()
     {
     	return sha;
     }
