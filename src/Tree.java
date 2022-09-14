@@ -47,7 +47,7 @@ public class Tree {
             throw new RuntimeException(ex);
         }
 		
-		File pairs = new File("Objects/" + sha);
+		File pairs = new File("objects/" + sha);
         pairs.createNewFile();
         InputStream input = new FileInputStream("output.txt");
         OutputStream output = new FileOutputStream(pairs);
