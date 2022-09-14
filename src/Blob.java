@@ -20,7 +20,7 @@ public class Blob {
         sha=getSHA1(read);
         
         
-        File write = new File("Objects/"+sha+".txt");
+        File write = new File("objects/"+sha+".txt");
         write.createNewFile();
         InputStream input = new FileInputStream(read);
         OutputStream output = new FileOutputStream(write);
