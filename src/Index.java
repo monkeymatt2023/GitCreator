@@ -20,9 +20,9 @@ public class Index {
 	private FileWriter output;
 	public Index() throws IOException
 	{
-		Path path= Paths.get("Objects/");
+		Path path= Paths.get("objects/");
 		Files.createDirectories(path);
-		index=new File("Objects/index.txt");
+		index=new File("objects/index.txt");
 		blobs=new HashMap<String,String>();
 		
 
@@ -46,7 +46,7 @@ public class Index {
 	{
 		if (blobs.containsKey(fileName))
 		{
-			File inputFile=new File("Objects/index.txt");
+			File inputFile=new File("objects/index.txt");
 			
 			File tempFile= new File ("temp.txt");
 			BufferedReader reader = new BufferedReader(new FileReader(inputFile));
