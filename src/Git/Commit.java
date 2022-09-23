@@ -1,5 +1,9 @@
 package Git;
 
+import java.util.*;
+import java.io.*;
+import java.security.*;
+
 public class Commit {
 	
 	public Commit parent;
@@ -13,7 +17,7 @@ public class Commit {
 	{
 		parent=parentPointer;
 		pointer=null;
-		pTree=new File (new Path (pTreeString));
+		pTree=new File (pTreeString);
 		author=authorName;
 		summary=changeLog;
 		pValue=pTreeString;
@@ -57,7 +61,7 @@ public class Commit {
 	 {
 		 return date;
 	 }
-	 public void createFile ()
+	 public void createFile () throws IOException
 	 {
 		 File file=new File ("objects/"+getSHA1(pTree));
 		 FileWriter writer=new FileWriter(file);
