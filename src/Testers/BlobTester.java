@@ -47,4 +47,5 @@ class BlobTester {
 		File file2 = new File("objects/c3499c2729730a7f807efb8676a92dcb6f8a3f8f");
 		assertTrue(file2.exists());
 	}
+	
 }

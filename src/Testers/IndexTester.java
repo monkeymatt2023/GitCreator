@@ -45,7 +45,7 @@ class IndexTester {
 	@Test 
 	void testInit() throws Exception {
 		Index i = new Index();
-		File file = new File("index");
+		File file = new File("index.txt");
 		assertTrue(file.exists());
 		Path path = Paths.get("objects");
 		assertTrue(Files.exists(path)); 

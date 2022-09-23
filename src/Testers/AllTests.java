@@ -17,6 +17,7 @@ import org.junit.platform.suite.api.SuiteDisplayName;
 @SuiteDisplayName("Git Project Tester")
 @SelectPackages("Testers")
 @IncludeClassNamePatterns(".*Tester")
+
 class AllTests {
     
     @Test
